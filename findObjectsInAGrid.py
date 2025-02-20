@@ -1,18 +1,55 @@
-# Time:O(nlogn) sorting
-# Space:O(n)
-# Leetcode: Yes
-# Issues:None
+# Time:O(mlogn) 
+# Space:O(1)
+# Leetcode: N/A
+# Issues:
 
 
-class Solution:
-    def reorderLogFiles(self, logs: List[str]) -> List[str]:
-        return sorted(logs, key = self.sorter)
+# enum Response {
+# 	HOTTER,  // Moving closer to target
+# 	COLDER,  // Moving farther from target
+# 	SAME,    // Same distance from the target as your previous guess
+# 	EXACT;   // Reached destination
+# }
 
-    def sorter(self, logs):
-        a,b = logs.split(" ",1)     # split in 2 halves
-        if b[0].isdigit():
-            return (2,None,None)
-        else:
-            return (1,b,a)          # 1(b(a))-> 2(None(None)) order
+# // Throws an error if 'row' or 'col' is out of bounds
+# public Response getResponse(int row, int col) {
+# 	// black box
+# }
+# Example 1:
 
 
+# Input:
+# [['o', 'o', 'o'],
+#  ['o', 'o', 'o'],
+#  ['x', 'o', 'o']]
+
+# Output: [2, 0]
+# Example 2:
+
+
+# Input:
+# [['o', 'o', 'o', 'o', 'o'],
+#  ['o', 'o', 'o', 'o', 'o'],
+#  ['o', 'o', 'o', 'o', 'o'],
+#  ['o', 'o', 'o', 'o', 'o'],
+#  ['o', 'o', 'o', 'x', 'o'],
+#  ['o', 'o', 'o', 'o', 'o']]
+
+# Output: [4, 3]
+
+# we need r,c of current grid
+# r,c of target
+# we can perform 
+# 1) Binary search
+# 2) row traversal then column tarversal
+
+class Guesser:  
+    def __init__(self, rows, columns):
+        self.rows = rows
+        self.columns = columns
+        
+    def get_response(self, row, col):
+        if not 0 <= row < self.rows and 0 <= col < self.columns:
+            raise ValueError("R or C out of bounds.")
+            
+    # logic
